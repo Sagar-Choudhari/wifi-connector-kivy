@@ -1,0 +1,37 @@
+#:kivy 1.11.1
+
+<WifiScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 10
+        spacing: 10
+        
+        Button:
+            text: 'Rescan Networks'
+            size_hint_y: None
+            height: 50
+            on_press: root.rescan_networks()
+        
+        ScrollView:
+            BoxLayout:
+                id: network_list
+                orientation: 'vertical'
+                size_hint_y: None
+                height: self.minimum_height
+                spacing: 5
+
+<LoadingPopup>:
+    title: 'Connecting...'
+    size_hint: 0.6, 0.3
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 20
+        spacing: 20
+        Label:
+            text: 'Attempting connection...'
+            halign: 'center'
+        ProgressBar:
+            max: 100
+            value: 50
+            size_hint_y: None
+            height: 30
