@@ -4,6 +4,10 @@ import re
 import subprocess
 from tqdm import tqdm  
 
+
+#  pyinstaller --clean -y -n "updater" --onefile updater_script2.py 
+
+
 # Google Apps Script to get the latest file info (returns JSON with file_id & file_name)
 # APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbznGngwK7ha-3ZXqBVKKpZDUq62VPMBUJApfXtmwwYh4-n6FWSXaUeY6GxAl8iBsy1S/exec"
 APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxpXi7-HOks26evXkONnOjC0p4ugrD8NarL1dWlrgdVxpgfODdkvcAeKpERE9AwXgyC/exec"
@@ -39,7 +43,6 @@ def get_latest_file_info():
 
         if response.status_code == 200:
             data = response.json()  # Expecting JSON response like {"file_id": "...", "file_name": "scada-v1.2.3.deb"}
-            print(f"data ",data)
             file_id = data.get("file_id")
             file_name = data.get("file_name")
             
